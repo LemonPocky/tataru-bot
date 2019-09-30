@@ -1,0 +1,16 @@
+{
+  "name": "tataru-bot",
+  "version": "1.0.0",
+  "description": "FFXIV bot for interacting with fflogs and other functions.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "LemonPocky",
+  "license": "ISC",
+  "dependencies": {
+    "discord.js": "^11.5.1",
+    "pino": "^5.13.4",
+    "pino-pretty": "^3.2.1"
+  }
+}
