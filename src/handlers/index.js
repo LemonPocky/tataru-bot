@@ -1,6 +1,6 @@
 'use strict';
 
 module.exports = {
-  logger: require('./Logger.js'),
-  CommandHandler: require('./CommandHandler.js'),
+  logger: require('./logger.js'),
+  CommandHandler: require('./command-handler.js'),
 };

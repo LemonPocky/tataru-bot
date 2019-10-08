@@ -9,8 +9,12 @@
   "author": "LemonPocky",
   "license": "ISC",
   "dependencies": {
+    "axios": "^0.19.0",
     "discord.js": "^11.5.1",
+    "dotenv": "^8.1.0",
+    "nedb": "^1.8.0",
     "pino": "^5.13.4",
-    "pino-pretty": "^3.2.1"
+    "pino-pretty": "^3.2.1",
+    "recursive-readdir": "^2.2.2"
   }
 }

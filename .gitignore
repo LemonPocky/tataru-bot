@@ -1,5 +1,5 @@
-# Discord login token
-auth.json
+# Environment variables
+.env
 
 # node modules should be installed by npm on host machine
 node_modules/
