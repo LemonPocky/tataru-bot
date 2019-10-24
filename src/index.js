@@ -1,7 +1,8 @@
 'use strict';
 
 module.exports = {
-  logger: require('./handlers/logger.js'),
+  ServerRegionMap: require('./utils/server-region-map.js'),
+  Character: require('./structures/character.js'),
 
-  FFlogs: require('./apis/fflogs.js');
+  logger: require('./handlers/logger.js'),
 };

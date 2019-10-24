@@ -16,4 +16,5 @@ const logger = pino({
 logger.level = loggingLevel;
 logger.info('Pino logger initialized.');
 
+// module returns a singleton logger used across the entire program
 module.exports = logger;

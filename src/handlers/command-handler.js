@@ -2,19 +2,21 @@
 
 const readdir = require('recursive-readdir');
 const Discord = require('discord.js');
-const { logger } = require('../');
+const logger = require('./logger.js');
 
 // Prefix is the character(s) that indicate this message is a bot command (e.g. "t!ping")
-// TODO: make prefix configurable
+// TODO: make prefix configurable [maybe not necessary]
 const { prefix } = require('../resources/config.json');
 // TODO: Figure out how to clean hardcoded pathnames
 const commandsDir = `${process.cwd()}/commands`;
 
 module.exports = class CommandHandler {
-  constructor () {
+  constructor (client) {
+    this.client = client;
     this.commands = new Discord.Collection();
     try {
       this.loadCommands();
+      this.client.commands = this.commands;
       logger.debug('Loaded commandHandler');
     } catch (error) {
       logger.error('Failed to initialize command handler.');
@@ -62,8 +64,8 @@ module.exports = class CommandHandler {
     try {
       this.commands.get(command).execute(message, args);
     } catch (error) {
+      logger.error(`Error running command ${message}`);
       logger.error(error);
-      message.reply('there was an error trying to execute that command!');
     }
    }
   }
