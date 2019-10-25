@@ -17,6 +17,10 @@ class Characters {
     }
   }
 
+  dbExists () {
+    return this.characterDatabase ? true : false;
+  }
+
   /**
    * Sends a request to FF Logs for a character. Returns true on a valid response code
    * (even if the response body is empty).

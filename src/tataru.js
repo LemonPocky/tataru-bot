@@ -10,6 +10,7 @@ if (dotenvError) {
 }
 
 const { logger } = require('./');
+const { ModuleLoader } = require('./loaders');
 
 // Listens for and executes commands (separate into handler and listener?)
 const { CommandHandler } = require('./handlers');
@@ -20,6 +21,7 @@ const token = process.env.DISCORD_TOKEN;
 // Initialize Discord client
 const client = new Discord.Client();
 const commandHandler = new CommandHandler(this);
+initLoaders();
 
 // Log in to Discord using the authentication token
 client.login(token)
@@ -40,3 +42,8 @@ client.on('message', (message) => {
   if (message.author.bot) return;
   commandHandler.runCommand(message);
 });
+
+async function initLoaders () {
+  const moduleLoader = new ModuleLoader();
+  await moduleLoader.load();
+}

@@ -19,7 +19,7 @@ module.exports = class CharacterDatabase extends Database {
   }
 
   async findCharacter (character) {
-    let params = {};
+    const params = {};
     if (character.name) {
       params.name = character.name;
     }
