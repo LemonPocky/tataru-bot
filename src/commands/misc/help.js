@@ -1,13 +1,20 @@
 'use strict';
 
 const { prefix } = require('../../resources/config.json');
+const { Command } = require('../../');
 
-module.exports = {
-  name: 'help',
-  description: 'List all of my commands or info about a specific command.',
-  execute (message, args) {
+module.exports = class Help extends Command {
+  constructor (client) {
+    super(client, {
+      name: 'help',
+      aliases: ['h'],
+      description: 'List all of my commands or info about a specific command.',
+    });
+  }
+
+  async execute (message, args) {
     const data = [];
-    const { commands } = message.client;
+    const commands = this.client.commands;
 
     if (!args.length) {
       data.push('Here\'s a list of all my commands:');
@@ -41,5 +48,5 @@ module.exports = {
 
       message.channel.send(data, { split: true });
     }
-  },
+  }
 };

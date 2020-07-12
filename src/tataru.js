@@ -21,20 +21,25 @@ const token = process.env.DISCORD_TOKEN;
 // Initialize Discord client
 const client = new Discord.Client();
 const commandHandler = new CommandHandler(this);
-initLoaders();
-
-// Log in to Discord using the authentication token
-client.login(token)
-    .catch(error => {
-      logger.fatal(`Error logging in: ${error.message}`);
-      return;
-    });
+initLoaders().then(() => {
+  // Log in to Discord using the authentication token
+  client.login(token)
+      .catch(error => {
+        logger.fatal(`Error logging in: ${error.message}`);
+        return;
+      });
+  })
+  .catch((error) => {
+    logger.fatal('Error starting up bot.');
+    logger.error(error);
+    return;
+  });
 
 // run once when bot is logged in to Discord
 client.once('ready', () => {
   logger.info('Connected');
   logger.info(`Logged in as: ${client.user.username} - id:${client.user.id}`);
-
+  logger.info('Ready to receive commands.');
 });
 
 // When the bot detects a message in a text channel, check if it's a command via commandHandler
